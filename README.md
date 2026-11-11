@@ -17,7 +17,7 @@ LostLink is a Thapar campus lost-and-found web app prototype. Students can post 
 To run LostLink locally, clone this repository to your system:
 
 ```
-git clone <repository-url>
+git clone https://github.com/agrimatiwari/LostLink
 ```
 Navigate to the project folder:
 
