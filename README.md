@@ -8,6 +8,7 @@ LostLink is a Thapar campus lost-and-found web app prototype. Students can post 
 - 🔍 Browse and filter reports by type, category, location, date, and status
 - 📣 Create lost-item and found-item reports
 - 📨 Submit claims with private identifying details; item owners can review requests
+- 🪪 Safety guidance for handing found ID cards to their owner or campus authority
 - 👤 Manage your reports and profile
 - 🎨 Warm light theme and dark theme, with the selection saved in the browser
 - 📱 Responsive layout for desktop and mobile
@@ -29,7 +30,7 @@ No additional installation or setup is required.
 
 ## 🧪 Demo and data
 
-Use **Continue with demo account** on the sign-in screen to explore the app. Reports, claims, profile details, and theme preference are stored in your browser's `localStorage`; they are not shared with other users or synchronized to a server. Clearing the browser's site data will remove them. 💾
+Use **Continue with demo account** on the sign-in screen to explore the app. Reports, claims, profile details, uploaded found-item photos, and theme preference are stored in your browser's `localStorage`; they are not shared with other users or synchronized to a server. Clearing the browser's site data will remove them. 💾 Sample item photos load from Unsplash and require an internet connection.
 
 Sign-in and student verification are simulated in this prototype. No email is sent, and passwords are not authenticated or stored. **🔒 Do not enter a real password or sensitive personal information.**
 

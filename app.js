@@ -7,9 +7,10 @@
     user: "lostlink.user.v1",
     theme: "lostlink.theme.v1",
   };
-  const categories = ["Electronics", "ID Cards & Documents", "Books & Stationery", "Bags & Accessories", "Clothing", "Keys", "Other"];
+  const categories = ["Electronics", "Books & Stationery", "Bags & Accessories", "Clothing", "Keys", "Other"];
   const locations = ["Library", "Student Centre", "Central Lawn", "Cafeteria", "Academic Block", "Sports Complex", "Hostel", "Other"];
   const symbols = { Electronics: "🎧", "ID Cards & Documents": "🪪", "Books & Stationery": "📚", "Bags & Accessories": "🎒", Clothing: "🧥", Keys: "🔑", Other: "🔎" };
+  const stockPhoto = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=80`;
   const byId = (id) => document.getElementById(id);
   const today = new Date();
   const dateAgo = (days) => {
@@ -18,14 +19,14 @@
     return date.toISOString().slice(0, 10);
   };
   const seedItems = [
-    { id: "seed-1", type: "lost", name: "Wireless earbuds", category: "Electronics", description: "White wireless earbuds in a compact charging case. Lost after an afternoon lecture.", date: dateAgo(1), location: "Academic Block", identifying: "", status: "Open", owner: "u-demo", ownerName: "Nidhi", createdAt: Date.now() - 86400000 * 1 },
-    { id: "seed-2", type: "found", name: "Bluetooth earbuds case", category: "Electronics", description: "A small white earbuds case was found near the lecture halls. Please describe the case to claim it.", date: dateAgo(2), location: "Academic Block", identifying: "One tiny blue sticker on the inside of the lid.", status: "Open", owner: "u-meera", ownerName: "Meera Kaur", createdAt: Date.now() - 86400000 * 2 },
-    { id: "seed-3", type: "lost", name: "Engineering mathematics notes", category: "Books & Stationery", description: "A spiral notebook with handwritten calculus and linear algebra notes.", date: dateAgo(3), location: "Library", identifying: "", status: "Open", owner: "u-rohan", ownerName: "Rohan Mehta", createdAt: Date.now() - 86400000 * 3 },
-    { id: "seed-4", type: "found", name: "Black notebook", category: "Books & Stationery", description: "Black spiral notebook picked up from a study table. Some pages have handwritten math notes.", date: dateAgo(1), location: "Library", identifying: "There is a small geometric doodle on the back cover.", status: "Open", owner: "u-demo", ownerName: "Nidhi", createdAt: Date.now() - 86400000 },
-    { id: "seed-5", type: "found", name: "Single key with green tag", category: "Keys", description: "One key with a green tag, currently kept safe with the finder.", date: dateAgo(4), location: "Student Centre", identifying: "The tag has a handwritten word on its reverse.", status: "Open", owner: "u-isha", ownerName: "Isha Sharma", createdAt: Date.now() - 86400000 * 4 },
-    { id: "seed-6", type: "lost", name: "Navy blue backpack", category: "Bags & Accessories", description: "Navy backpack left behind around lunchtime. Contains course materials.", date: dateAgo(5), location: "Cafeteria", identifying: "", status: "Open", owner: "u-demo", ownerName: "Nidhi", createdAt: Date.now() - 86400000 * 5 },
-    { id: "seed-7", type: "found", name: "Student ID card", category: "ID Cards & Documents", description: "A student ID card was found near the Central Lawn. Name and ID are kept private.", date: dateAgo(2), location: "Central Lawn", identifying: "The card has a small crack near one corner.", status: "Submitted to campus office", owner: "u-kabir", ownerName: "Kabir Anand", createdAt: Date.now() - 86400000 * 2 },
-    { id: "seed-8", type: "lost", name: "Silver water bottle", category: "Other", description: "Insulated silver bottle with a black cap, misplaced during the morning.", date: dateAgo(6), location: "Sports Complex", identifying: "", status: "Open", owner: "u-nisha", ownerName: "Nisha Bedi", createdAt: Date.now() - 86400000 * 6 },
+    { id: "seed-1", type: "lost", name: "Wireless earbuds", category: "Electronics", description: "White wireless earbuds in a compact charging case. Lost after an afternoon lecture.", date: dateAgo(1), location: "Academic Block", identifying: "", status: "Open", owner: "u-demo", ownerName: "Nidhi", photo: stockPhoto("photo-1606220945770-b5b6c2c55bf1"), createdAt: Date.now() - 86400000 * 1 },
+    { id: "seed-2", type: "found", name: "Bluetooth earbuds case", category: "Electronics", description: "A small white earbuds case was found near the lecture halls. Please describe the case to claim it.", date: dateAgo(2), location: "Academic Block", identifying: "One tiny blue sticker on the inside of the lid.", status: "Open", owner: "u-meera", ownerName: "Meera Kaur", photo: stockPhoto("photo-1606220945770-b5b6c2c55bf1"), createdAt: Date.now() - 86400000 * 2 },
+    { id: "seed-3", type: "lost", name: "Engineering mathematics notes", category: "Books & Stationery", description: "A spiral notebook with handwritten calculus and linear algebra notes.", date: dateAgo(3), location: "Library", identifying: "", status: "Open", owner: "u-rohan", ownerName: "Rohan Mehta", photo: stockPhoto("photo-1531346878377-a5be20888e57"), createdAt: Date.now() - 86400000 * 3 },
+    { id: "seed-4", type: "found", name: "Black notebook", category: "Books & Stationery", description: "Closed black notebook picked up from a study table.", date: dateAgo(1), location: "Library", identifying: "There is a small geometric doodle on the back cover.", status: "Open", owner: "u-demo", ownerName: "Nidhi", photo: stockPhoto("photo-1551396028-60ed2702a337"), createdAt: Date.now() - 86400000 },
+    { id: "seed-5", type: "found", name: "Key with a green keychain", category: "Keys", description: "One key with a bright green, handmade keychain, currently kept safe with the finder.", date: dateAgo(4), location: "Student Centre", identifying: "The tag has a handwritten word on its reverse.", status: "Open", owner: "u-isha", ownerName: "Isha Sharma", photo: "assets/green-keychain.png", createdAt: Date.now() - 86400000 * 4 },
+    { id: "seed-6", type: "lost", name: "Navy blue backpack", category: "Bags & Accessories", description: "Navy backpack left behind around lunchtime. Contains course materials.", date: dateAgo(5), location: "Cafeteria", identifying: "", status: "Open", owner: "u-demo", ownerName: "Nidhi", photo: stockPhoto("photo-1553062407-98eeb64c6a62"), createdAt: Date.now() - 86400000 * 5 },
+    { id: "seed-7", type: "found", name: "Casio scientific calculator", category: "Electronics", description: "A Casio scientific calculator was handed in near the Central Lawn and is being held at the campus office.", date: dateAgo(2), location: "Central Lawn", identifying: "Check the model label and a small mark on the back of the cover.", status: "Submitted to campus office", owner: "u-kabir", ownerName: "Kabir Anand", photo: stockPhoto("photo-1757256137041-0aab889db199"), createdAt: Date.now() - 86400000 * 2 },
+    { id: "seed-8", type: "lost", name: "Silver water bottle", category: "Other", description: "Insulated silver bottle with a black cap, misplaced during the morning.", date: dateAgo(6), location: "Sports Complex", identifying: "", status: "Open", owner: "u-nisha", ownerName: "Nisha Bedi", photo: stockPhoto("photo-1616170919057-5946e5f0c9f6"), createdAt: Date.now() - 86400000 * 6 },
   ];
 
   const read = (key, fallback) => {
@@ -53,12 +54,29 @@
     items = seedItems;
     write(STORAGE.items, items);
   }
+  let updatedSeedItems = false;
+  items.forEach((item) => {
+    const seedItem = seedItems.find((seed) => seed.id === item.id);
+    if (seedItem) {
+      for (const [key, value] of Object.entries(seedItem)) {
+        if (item[key] !== value && (key === "photo" || item.id === "seed-5" && ["name", "description"].includes(key) || item.id === "seed-7" && ["name", "category", "description", "identifying"].includes(key) || item.id === "seed-4" && key === "description")) {
+          item[key] = value;
+          updatedSeedItems = true;
+        }
+      }
+    }
+  });
+  if (updatedSeedItems) write(STORAGE.items, items);
   let claims = read(STORAGE.claims, []);
   if (!Array.isArray(claims)) claims = [];
   let user = read(STORAGE.user, {
     id: "u-demo", name: "Nidhi", email: "aarav.singh@thapar.edu",
     studentId: "1023••••", verified: true, contactPreference: "In-app messages",
   });
+  if (user?.id === "u-demo" && user.email === "aarav.singh@thapar.edu") {
+    user.email = "nidhi@thapar.edu";
+    write(STORAGE.user, user);
+  }
   if (user?.id === "u-demo" && user.name === "Aarav Singh") {
     user.name = "Nidhi";
     write(STORAGE.user, user);
@@ -71,6 +89,7 @@
   let browseType = "all";
   let browseFilters = { search: "", category: "", location: "", status: "" };
   let authMode = "login";
+  let photoPreviewUrl = null;
 
   function escapeHtml(value = "") {
     return String(value).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
@@ -93,13 +112,50 @@
     byId("toast-region").append(node);
     window.setTimeout(() => node.remove(), 3500);
   }
+  function itemPhotoMarkup(item) {
+    const placeholder = `<span class="item-photo-placeholder">${/calculator/i.test(item.name) ? "🧮" : symbols[item.category] || "🔎"}</span>`;
+    const photo = item.photo;
+    if (!photo || !(/^(https:\/\/|assets\/[a-z0-9._-]+|data:image\/(?:jpeg|png|webp);base64,)/i).test(photo)) return placeholder;
+    return `<img class="item-photo-image" src="${escapeHtml(photo)}" alt="${escapeHtml(item.name)}" loading="lazy">${placeholder}`;
+  }
+  function clearPhotoPreview() {
+    if (photoPreviewUrl) URL.revokeObjectURL(photoPreviewUrl);
+    photoPreviewUrl = null;
+  }
+  function compressPhoto(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = () => reject(new Error("The selected photo could not be read."));
+      reader.onload = () => {
+        const image = new Image();
+        image.onerror = () => reject(new Error("The selected photo could not be opened."));
+        image.onload = () => {
+          const scale = Math.min(1, 1000 / Math.max(image.naturalWidth, image.naturalHeight));
+          const canvas = document.createElement("canvas");
+          canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
+          canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
+          const context = canvas.getContext("2d");
+          if (!context) {
+            reject(new Error("Photo processing is not available in this browser."));
+            return;
+          }
+          context.fillStyle = "#fff";
+          context.fillRect(0, 0, canvas.width, canvas.height);
+          context.drawImage(image, 0, 0, canvas.width, canvas.height);
+          resolve(canvas.toDataURL("image/jpeg", .78));
+        };
+        image.src = String(reader.result);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
   function persistItems() { return write(STORAGE.items, items); }
   function persistClaims() { return write(STORAGE.claims, claims); }
   function persistUser() { return write(STORAGE.user, user); }
   function safeEmail(email) {
     const [name, domain] = email.split("@");
     if (!domain) return "Student email";
-    return `${name.slice(0, 2)}•••@${domain}`;
+    return `${name.charAt(0)}.......@${domain}`;
   }
   function syncUser() {
     const name = user?.name || "Student";
@@ -113,6 +169,7 @@
   }
   function ownItem(itemId) { return items.find((item) => item.id === itemId)?.owner === user?.id; }
   function navTo(page) {
+    clearPhotoPreview();
     if (!user && page !== "auth") {
       page = "auth";
       toast("Please sign in to access your account.");
@@ -136,6 +193,9 @@
   }
   function pageHeading(eyebrow, title, subtitle, action = "") {
     return `<div class="page-heading"><div><div class="eyebrow">${eyebrow}</div><h1>${title}</h1><p>${subtitle}</p></div>${action}</div>`;
+  }
+  function idCardNotice() {
+    return `<div class="id-card-notice" role="note"><strong>Lost or found an ID card?</strong><p>If you find one, contact its owner directly or hand it to the designated campus authority. If your ID is missing, contact campus authority for help. Please don’t post a card photo or personal details publicly.</p></div>`;
   }
   function typeBadge(type) {
     return `<span class="type-badge ${type}">${type === "lost" ? "Lost" : "Found"}</span>`;
@@ -179,7 +239,7 @@
         <div class="stat-card"><span class="stat-icon claim"><svg viewBox="0 0 24 24"><path d="M8.5 12 11 14.5 17 8"/><circle cx="12" cy="12" r="9"/></svg></span><div class="stat-copy"><span>Pending claims</span><strong>${myClaims}</strong></div></div>
       </section>
       <section class="dashboard-grid">
-        <div><div class="section-card"><div class="section-card-header"><div><h2>Recently reported</h2><p>Fresh updates from around campus</p></div><button class="text-link" data-page="browse">View all →</button></div><div class="recent-list">${recent.map((item) => `<div class="recent-item" data-item="${escapeHtml(item.id)}" role="button" tabindex="0"><span class="item-emoji">${symbols[item.category] || "🔎"}</span><div class="recent-details"><strong>${escapeHtml(item.name)}</strong><span>${escapeHtml(item.location)} · ${timeAgo(item.createdAt)}</span></div>${typeBadge(item.type)}</div>`).join("")}</div></div>
+        <div><div class="section-card"><div class="section-card-header"><div><h2>Recently reported</h2><p>Fresh updates from around campus</p></div><button class="text-link" data-page="browse">View all →</button></div><div class="recent-list">${recent.map((item) => `<div class="recent-item" data-item="${escapeHtml(item.id)}" role="button" tabindex="0"><span class="item-emoji recent-item-photo">${itemPhotoMarkup(item)}</span><div class="recent-details"><strong>${escapeHtml(item.name)}</strong><span>${escapeHtml(item.location)} · ${timeAgo(item.createdAt)}</span></div>${typeBadge(item.type)}</div>`).join("")}</div></div>
           <div class="quick-actions"><button class="quick-action" data-page="report-lost"><span class="quick-icon lost">＋</span><span><strong>Lost something?</strong><small>Tell the community</small></span></button><button class="quick-action" data-page="report-found"><span class="quick-icon found">✓</span><span><strong>Found an item?</strong><small>Help reunite it</small></span></button></div>
         </div>
         <div class="section-card matches-panel"><div class="section-card-header"><div><h2>Possible matches</h2><p>Suggestions, not confirmed matches</p></div><span class="match-arrow">✦</span></div>${suggestions.length ? suggestions.map((match) => `<div class="match-card" data-item="${escapeHtml(match.item.id)}" role="button" tabindex="0"><div class="match-card-top">${typeBadge(match.item.type)}<span class="match-score">${match.score}% match</span></div><strong>${escapeHtml(match.source.name)} ↔ ${escapeHtml(match.item.name)}</strong><p>${escapeHtml(match.reason)}. Check the details to see if they belong together.</p></div>`).join("") : `<div class="empty-state" style="margin:0 14px 12px;padding:25px 12px"><div class="empty-emoji">✦</div><h3>No new matches yet</h3><p>We’ll compare your open reports as new items are added.</p></div>`}</div>
@@ -200,6 +260,7 @@
       return !query || `${item.name} ${item.description} ${item.category} ${item.location}`.toLowerCase().includes(query);
     }).sort((a, b) => b.createdAt - a.createdAt);
     return `${pageHeading("Campus community", "Browse items", "Search reports and help bring a lost item back to its owner.", `<button class="button button-primary" data-page="report-lost">+ New report</button>`)}
+      ${idCardNotice()}
       <div class="filter-bar"><label class="search-field"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><input id="browse-search" type="search" placeholder="Search name, details or location..." value="${escapeHtml(browseFilters.search)}" aria-label="Search reports"></label>
       <select class="filter-select" id="category-filter" aria-label="Filter by category"><option value="">All categories</option>${categories.map((category) => `<option ${browseFilters.category === category ? "selected" : ""}>${escapeHtml(category)}</option>`).join("")}</select>
       <select class="filter-select" id="location-filter" aria-label="Filter by location"><option value="">All locations</option>${locations.map((location) => `<option ${browseFilters.location === location ? "selected" : ""}>${escapeHtml(location)}</option>`).join("")}</select>
@@ -212,7 +273,7 @@
     const matches = matchesFor(item);
     const canClaim = item.type === "found" && item.owner !== user.id && item.status === "Open";
     const claimAlready = claims.some((claim) => claim.itemId === item.id && claim.claimant === user.id && claim.status === "Pending");
-    return `<article class="item-card" data-item="${escapeHtml(item.id)}" tabindex="0" role="button"><div class="item-card-visual"><span>${symbols[item.category] || "🔎"}</span>${typeBadge(item.type)}${matches.length ? `<span class="match-chip">✦ ${matches.length} possible ${matches.length === 1 ? "match" : "matches"}</span>` : ""}</div><div class="item-card-body"><div class="item-card-title"><h3>${escapeHtml(item.name)}</h3></div><p>${escapeHtml(item.description)}</p><div class="item-meta"><span><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>${escapeHtml(item.location)}</span><span><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>${dateLabel(item.date)}</span></div><div class="item-card-footer"><span class="reporter">Shared by ${item.owner === user.id ? "you" : "a student"} · ${timeAgo(item.createdAt)}</span><span class="status-badge ${item.status.toLowerCase().replaceAll(" ", "-")}">${escapeHtml(item.status)}</span></div>${canClaim ? `<button class="small-button claim-button" style="margin-top:11px;width:100%" data-action="claim" data-id="${escapeHtml(item.id)}" ${claimAlready ? "disabled" : ""}>${claimAlready ? "Claim submitted" : "Claim item"}</button>` : ""}</div></article>`;
+    return `<article class="item-card" data-item="${escapeHtml(item.id)}" tabindex="0" role="button"><div class="item-card-visual">${itemPhotoMarkup(item)}${typeBadge(item.type)}${matches.length ? `<span class="match-chip">✦ ${matches.length} possible ${matches.length === 1 ? "match" : "matches"}</span>` : ""}</div><div class="item-card-body"><div class="item-card-title"><h3>${escapeHtml(item.name)}</h3></div><p>${escapeHtml(item.description)}</p><div class="item-meta"><span><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>${escapeHtml(item.location)}</span><span><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>${dateLabel(item.date)}</span></div><div class="item-card-footer"><span class="reporter">Shared by ${item.owner === user.id ? "you" : "a student"} · ${timeAgo(item.createdAt)}</span><span class="status-badge ${item.status.toLowerCase().replaceAll(" ", "-")}">${escapeHtml(item.status)}</span></div>${canClaim ? `<button class="small-button claim-button" style="margin-top:11px;width:100%" data-action="claim" data-id="${escapeHtml(item.id)}" ${claimAlready ? "disabled" : ""}>${claimAlready ? "Claim submitted" : "Claim item"}</button>` : ""}</div></article>`;
   }
   function renderReportForm(type) {
     const isLost = type === "lost";
@@ -224,9 +285,10 @@
         <div class="field"><label for="item-date">${isLost ? "Approximate date lost" : "Date found"} *</label><input id="item-date" name="date" type="date" max="${dateAgo(0)}" required></div>
         <div class="field"><label for="item-location">${isLost ? "Last known location" : "Location found"} *</label><select id="item-location" name="location" required><option value="">Choose a campus location</option>${locations.map((location) => `<option>${escapeHtml(location)}</option>`).join("")}</select></div>
         <div class="field field-full"><label for="item-identifying">${isLost ? "Identifying details" : "Private identifying details"} <span>${isLost ? "(optional)" : "(only shown to the finder)"}</span></label><textarea id="item-identifying" name="identifying" maxlength="300" placeholder="${isLost ? "A unique mark, sticker or detail that helps identify it." : "Keep one or two distinctive details private for claim verification."}"></textarea><small>${isLost ? "Details help distinguish your item from similar reports." : "This information is not shown in public listings and can help you verify claims."}</small></div>
+        ${!isLost ? `<div class="field field-full"><label for="item-photo">Item photo <span>(optional)</span></label><input id="item-photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp"><small>Choose a clear photo (JPEG, PNG or WebP, up to 8 MB). It will be resized and saved in this browser.</small><div class="photo-preview" id="photo-preview" hidden></div></div>` : ""}
         ${isLost ? `<div class="field field-full"><label for="contact-pref">Contact preference *</label><select id="contact-pref" name="contactPreference" required><option>In-app messages</option><option>Meet at a campus office</option><option>Meet at a public campus location</option></select></div>` : `<div class="field field-full"><label for="item-status">Where is the item now? *</label><select id="item-status" name="status" required><option value="With the finder">With me (the finder)</option><option value="Submitted to campus office">Submitted to a campus office</option></select></div>`}
         </div><div class="form-actions"><button class="button button-secondary" type="reset">Clear form</button><button class="button button-primary" type="submit">Publish ${isLost ? "lost" : "found"} report →</button></div></form>
-        <aside><div class="info-panel"><h3>${isLost ? "Make your report count" : "A safer way to help"}</h3><ul class="info-list">${(isLost ? ["Include a clear, accurate description.", "Choose the closest campus location.", "Check possible matches in your dashboard."] : ["Keep unique details private for verification.", "Choose where the item is safely held.", "Never share someone’s ID or contact details."]).map((tip) => `<li>${tip}</li>`).join("")}</ul></div><div class="safety-note"><strong>Safe handovers matter</strong><p>Arrange returns at a campus office or a busy public place. Verify ownership before handing anything over.</p></div></aside></div>`;
+        <aside>${!isLost ? idCardNotice() : ""}<div class="info-panel"><h3>${isLost ? "Make your report count" : "A safer way to help"}</h3><ul class="info-list">${(isLost ? ["Include a clear, accurate description.", "Choose the closest campus location.", "Check possible matches in your dashboard."] : ["Keep unique details private for verification.", "Choose where the item is safely held.", "Never share someone’s ID or contact details."]).map((tip) => `<li>${tip}</li>`).join("")}</ul></div><div class="safety-note"><strong>Safe handovers matter</strong><p>Arrange returns at a campus office or a busy public place. Verify ownership before handing anything over.</p></div></aside></div>`;
   }
   function renderReports() {
     const mine = items.filter((item) => item.owner === user.id).sort((a, b) => b.createdAt - a.createdAt);
@@ -236,7 +298,7 @@
   }
   function renderReportRow(item) {
     const claimsForItem = claims.filter((claim) => claim.itemId === item.id && claim.status === "Pending").length;
-    return `<div class="report-row"><span class="item-emoji">${symbols[item.category] || "🔎"}</span><div class="report-row-main" data-item="${escapeHtml(item.id)}"><h3>${escapeHtml(item.name)} ${typeBadge(item.type)}</h3><p>${escapeHtml(item.location)} · ${dateLabel(item.date)} · ${claimsForItem ? `${claimsForItem} pending claim${claimsForItem > 1 ? "s" : ""}` : "No pending claims"}</p></div><span class="status-badge ${item.status.toLowerCase().replaceAll(" ", "-")}">${escapeHtml(item.status)}</span><div class="row-actions">${item.type === "found" && claimsForItem ? `<button class="small-button" data-page="claims">Review claims</button>` : ""}${item.type === "found" && item.status !== "Recovered" ? `<button class="small-button" data-action="recover" data-id="${escapeHtml(item.id)}">Mark recovered</button>` : ""}</div></div>`;
+    return `<article class="item-card report-item-card" data-item="${escapeHtml(item.id)}" tabindex="0" role="button"><div class="item-card-visual">${itemPhotoMarkup(item)}${typeBadge(item.type)}</div><div class="item-card-body"><div class="item-card-title"><h3>${escapeHtml(item.name)}</h3><span class="status-badge ${item.status.toLowerCase().replaceAll(" ", "-")}">${escapeHtml(item.status)}</span></div><p>${escapeHtml(item.location)} · ${dateLabel(item.date)} · ${claimsForItem ? `${claimsForItem} pending claim${claimsForItem > 1 ? "s" : ""}` : "No pending claims"}</p><div class="row-actions">${item.type === "found" && claimsForItem ? `<button class="small-button" data-page="claims">Review claims</button>` : ""}${item.type === "found" && item.status !== "Recovered" ? `<button class="small-button" data-action="recover" data-id="${escapeHtml(item.id)}">Mark recovered</button>` : ""}</div></div></article>`;
   }
   function renderClaims() {
     const incoming = claims.filter((claim) => ownItem(claim.itemId)).sort((a, b) => b.createdAt - a.createdAt);
@@ -253,7 +315,7 @@
   function renderProfile() {
     return `${pageHeading("Your account", "My profile", "Your student identity stays private while you connect with campus peers.")}
       <div class="profile-layout"><section class="profile-card"><div class="profile-header"><span class="avatar avatar-large">${initials(user.name)}</span><div><h2>${escapeHtml(user.name)}</h2><p>Thapar Institute of Engineering &amp; Technology</p>${user.verified ? `<span class="verified"><svg viewBox="0 0 16 16"><path d="m3 8 3 3 7-7"/></svg>Verified student</span>` : `<span class="status-badge">Verification pending</span>`}</div></div>
-      <div class="profile-details"><div class="detail-pair"><span>Thapar email</span><strong>${escapeHtml(safeEmail(user.email))}</strong></div><div class="detail-pair"><span>Student ID</span><strong>${escapeHtml(user.studentId || "••••••••")}</strong></div><div class="detail-pair"><span>Contact preference</span><strong>${escapeHtml(user.contactPreference || "In-app messages")}</strong></div><div class="detail-pair"><span>Member since</span><strong>Thapar community</strong></div></div></section>
+      <div class="profile-details"><div class="detail-pair"><span>Thapar email</span><strong>${escapeHtml(safeEmail(user.email))}</strong></div><div class="detail-pair"><span>Student ID</span><strong>${escapeHtml(user.studentId || "••••••••")}</strong></div><div class="detail-pair"><span>Contact preference</span><strong>${escapeHtml(user.contactPreference || "In-app messages")}</strong></div></div></section>
       <aside class="section-card"><div class="section-card-header"><div><h2>Account access</h2><p>Manage your sign-in</p></div></div><div style="padding:0 16px 16px"><p style="font-size:10px;color:var(--muted);line-height:1.55">This local prototype stores demo account details only in this browser.</p><button class="button button-secondary" data-action="sign-out" style="width:100%">Sign out</button></div></aside></div>`;
   }
   function renderSettings() {
@@ -287,7 +349,7 @@
     const claimButton = item.type === "found" && !isOwner && item.status === "Open"
       ? `<button class="button button-primary" data-action="claim" data-id="${escapeHtml(item.id)}" ${existingClaim ? "disabled" : ""}>${existingClaim ? "Claim submitted" : "Claim this item"}</button>` : "";
     byId("modal").innerHTML = `<div class="modal-header"><div><div class="eyebrow">${item.type === "lost" ? "Lost report" : "Found report"}</div><h2 id="modal-title">${escapeHtml(item.name)}</h2><p>${escapeHtml(item.category)} · Shared ${timeAgo(item.createdAt)}</p></div><button class="close-button" data-action="close-modal" aria-label="Close dialog">×</button></div>
-      <div class="detail-visual">${symbols[item.category] || "🔎"}</div><p class="detail-description">${escapeHtml(item.description)}</p>
+      <div class="detail-visual">${itemPhotoMarkup(item)}</div><p class="detail-description">${escapeHtml(item.description)}</p>
       <div class="modal-meta"><div><span>Campus location</span><strong>${escapeHtml(item.location)}</strong></div><div><span>${item.type === "lost" ? "Date lost" : "Date found"}</span><strong>${dateLabel(item.date)}</strong></div><div><span>Report status</span><strong>${escapeHtml(item.status)}</strong></div><div><span>Reported by</span><strong>${isOwner ? "You" : "Verified student"}</strong></div></div>
       ${isOwner && item.identifying ? `<div class="private-detail"><strong>Your private identifying details</strong><p>${escapeHtml(item.identifying)}</p></div>` : ""}
       ${possibleMatches.length ? `<div style="margin-top:15px"><strong style="font-size:10px">Possible matches — not confirmed</strong>${possibleMatches.map((match) => `<div class="match-card" style="margin:9px 0 0" data-item="${escapeHtml(match.item.id)}"><div class="match-card-top">${typeBadge(match.item.type)}<span class="match-score">${match.score}% possible</span></div><strong>${escapeHtml(match.item.name)}</strong><p>${escapeHtml(match.reason)}</p></div>`).join("")}</div>` : ""}
@@ -332,7 +394,7 @@
       if (persistUser()) { render(); toast("Student verification complete (simulated)."); }
     }
     if (action === "auth-switch") { authMode = authMode === "login" ? "register" : "login"; render(); }
-    if (action === "demo-login") { user = { id: "u-demo", name: "Nidhi", email: "aarav.singh@thapar.edu", studentId: "1023••••", verified: true, contactPreference: "In-app messages" }; persistUser(); navTo("dashboard"); toast("Welcome back to the demo account."); }
+    if (action === "demo-login") { user = { id: "u-demo", name: "Nidhi", email: "nidhi@thapar.edu", studentId: "1023••••", verified: true, contactPreference: "In-app messages" }; persistUser(); navTo("dashboard"); toast("Welcome back to the demo account."); }
     if (action === "sign-out") { user = null; write(STORAGE.user, null); navTo("auth"); }
     if (action === "claim") openClaimForm(id);
     if (action === "recover") setItemStatus(id, "Recovered");
@@ -349,6 +411,9 @@
       if (persistClaims()) { render(); toast(action === "approve-claim" ? "Claim approved. Arrange a safe handover." : "Claim rejected."); }
     }
   }
+  document.addEventListener("error", (event) => {
+    if (event.target.matches(".item-photo-image")) event.target.parentElement.classList.add("photo-failed");
+  }, true);
 
   document.addEventListener("click", (event) => {
     const pageButton = event.target.closest("[data-page]");
@@ -388,12 +453,35 @@
     }
   });
   document.addEventListener("change", (event) => {
+    if (event.target.id === "item-photo") {
+      const input = event.target;
+      const file = input.files[0];
+      const preview = byId("photo-preview");
+      clearPhotoPreview();
+      preview.hidden = true;
+      preview.innerHTML = "";
+      if (!file) return;
+      if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+        input.value = "";
+        toast("Choose a JPEG, PNG or WebP image.");
+        return;
+      }
+      if (file.size > 8 * 1024 * 1024) {
+        input.value = "";
+        toast("Choose a photo smaller than 8 MB.");
+        return;
+      }
+      photoPreviewUrl = URL.createObjectURL(file);
+      preview.innerHTML = `<img src="${photoPreviewUrl}" alt="Selected item photo preview">`;
+      preview.hidden = false;
+      return;
+    }
     if (["category-filter", "location-filter", "date-filter", "status-filter"].includes(event.target.id)) {
       browseFilters[{ "category-filter": "category", "location-filter": "location", "date-filter": "date", "status-filter": "status" }[event.target.id]] = event.target.value;
       render();
     }
   });
-  document.addEventListener("submit", (event) => {
+  document.addEventListener("submit", async (event) => {
     const form = event.target;
     if (form.id === "report-form") {
       event.preventDefault();
@@ -409,8 +497,19 @@
         contactPreference: String(data.get("contactPreference") || ""), createdAt: Date.now(),
       };
       if (!newItem.name || !newItem.description || !newItem.date || new Date(`${newItem.date}T00:00:00`) > today) { toast("Please check the required fields and date."); return; }
+      const photoFile = type === "found" ? form.elements.photo.files[0] : null;
+      if (photoFile) {
+        try {
+          newItem.photo = await compressPhoto(photoFile);
+        } catch (error) {
+          console.error("Could not process the selected item photo.", error);
+          toast("Could not process that photo. Try a different image.");
+          return;
+        }
+      }
       items.unshift(newItem);
       if (!persistItems()) { items.shift(); return; }
+      clearPhotoPreview();
       toast(`${type === "lost" ? "Lost" : "Found"} report published.`);
       navTo("reports");
     }
@@ -445,7 +544,15 @@
     }
   });
   document.addEventListener("reset", (event) => {
-    if (event.target.id === "report-form") window.setTimeout(() => { const dateInput = byId("item-date"); if (dateInput) dateInput.value = ""; }, 0);
+    if (event.target.id === "report-form") {
+      clearPhotoPreview();
+      window.setTimeout(() => {
+        const dateInput = byId("item-date");
+        if (dateInput) dateInput.value = "";
+        const preview = byId("photo-preview");
+        if (preview) { preview.hidden = true; preview.innerHTML = ""; }
+      }, 0);
+    }
   });
   byId("theme-toggle").addEventListener("click", () => toggleTheme());
   byId("mobile-menu").addEventListener("click", () => byId("sidebar").classList.toggle("open"));
